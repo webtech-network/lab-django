@@ -62,6 +62,7 @@ from django.urls import path, include
 Em seguida, adicione à lista `urlpatters` o seguinte elemento:
 ```python
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('api/', include('api.urls'))
 ]
 ```
@@ -119,4 +120,23 @@ No terminal, use os comandos:
   python manage.py migrate
 ```
 Agora , o seu banco de dados SQLite foi gerado.
+
+## Usando o ADMIN
+
+Para usar o admin, é necessário criar um superuser com o seguinte comando:
+
+```bash
+  python manage.py createsuperuser
+```
+Será necessário informar um nome de usuário, email e senha.
+
+No arquivo `admin.py` , cadastre os seus models á plataforma.
+```python
+from django.contrib import admin
+from .models import Task
+
+# Register your models here.
+admin.site.register(Task)
+```
+
 
