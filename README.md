@@ -91,5 +91,5 @@ Para testar o funcionamento da API, use o comando:
 ```bash
 python manage.py runserver
 ```
-
+**Importante** -> Para acessar a sua view, a url deve conter /api no final. 
 
