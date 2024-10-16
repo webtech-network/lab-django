@@ -13,7 +13,7 @@ pip install djangorestframework
 ## Segundo passo
 Criar o projeto django com o comando:
 ```bash
-python manage.py startproject lista
+ django-admin startproject lista
 ```
 Conecte o rest_framework no arquivo `settings.py`
 
