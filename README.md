@@ -1,6 +1,7 @@
 # lab-django
 Lab de Django para workshop 
 
+**Importante:** Sempre ao aplicar um comando usando o manage.py. Certifique-se de estar no diretório do seu projeto.
 ## First-Step 
 Criar o ambiente virtual e instalar django e rest framework
 ```bash
@@ -92,4 +93,30 @@ Para testar o funcionamento da API, use o comando:
 python manage.py runserver
 ```
 **Importante** -> Para acessar a sua view, a url deve conter /api no final. 
+
+## Sexto Passo
+Criar os models (banco de dados) 
+No arquivo `models.py` na pasta de sua aplicação. Crie a seguinte tabela: 
+```python
+from django.db import models
+
+# Create your models here
+class Task(models.Model):
+    name = models.CharField(max_length=20)
+    description = models.TextField(max_length=100)
+    due_to = models.DateTimeField(blank=True, auto_now=False)
+    is_completed = models.BooleanField()
+
+    def __str__(self):
+        return self.name
+
+```
+No terminal, use os comandos:
+```bash
+  python manage.py makemigrations
+```
+```bash
+  python manage.py migrate
+```
+Agora , o seu banco de dados SQLite foi gerado.
 
