@@ -76,6 +76,17 @@ class BaseView(APIView):
         return Response("Hello World")
 ```
 
+Antes de tester a view, mapeie-a no arquivo `urls.py` da sua APLICAÇÃO.
+```python
+from django.urls import path
+from .views import BaseView
+
+urlpatterns = [
+    path('', BaseView.as_view())
+]
+
+```
+
 Para testar o funcionamento da API, use o comando:
 ```bash
 python manage.py runserver
