@@ -139,4 +139,12 @@ from .models import Task
 admin.site.register(Task)
 ```
 
+Agora, aplique o comando: 
+```bash
+python manage.py runserver
+```
+
+Para acessar a interface ADMIN, use a URL /admin
+
+
 
