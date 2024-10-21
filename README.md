@@ -2,7 +2,7 @@
 Lab de Django para workshop 
 
 **Importante:** Sempre ao aplicar um comando usando o manage.py. Certifique-se de estar no diretório do seu projeto.
-## First-Step 
+## Primeiro passo
 Criar o ambiente virtual e instalar django e rest framework
 ```bash
 pip install django
@@ -14,7 +14,7 @@ pip install djangorestframework
 ## Segundo passo
 Criar o projeto django com o comando:
 ```bash
- django-admin startproject lista
+ django-admin startproject 
 ```
 Conecte o rest_framework no arquivo `settings.py`
 
