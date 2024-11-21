@@ -3,7 +3,33 @@ Lab de Django para workshop
 
 **Importante:** Sempre ao aplicar um comando usando o manage.py. Certifique-se de estar no diretório do seu projeto.
 ## Primeiro passo
-Criar o ambiente virtual e instalar django e rest framework
+Primeiramente, abra o terminal segurando a tecla WINDOWS + r, digite `cmd` na janela que abrir e aperte ENTER 
+No terminal, teste se o python e o pip estão instalados:
+```bash
+python --version && pip --version
+```
+## Segundo passo
+Vamos navegar até a pasta que criamos com o comando:
+```bash
+ cd Desktop/[nome da pasta que você criou]
+```
+
+Agora vamos criar um ambiente virtual para nosso projeto, instale a biblioteca `virtualenv` com o seguinte comando:
+```bash
+pip install virtualenv
+```
+Após a instalação ser concluída, vamos iniciar um ambiente virtual:
+```bash
+python -m venv venv
+```
+Por fim, precisamos ativar nosso ambiente virtual. Para isso, ativamos com o seguinte comando:
+```bash
+venv\Scripts\activate
+```
+Após a ativação, você deverá ver `(venv)` na frente do caminho do seu terminal.
+
+## Terceiro passo
+Agora vamos instalar django e o rest framework
 ```bash
 pip install django
 ```
@@ -11,7 +37,7 @@ pip install django
 pip install djangorestframework
 ```
 
-## Segundo passo
+## Quarto passo
 Criar o projeto django com o comando:
 ```bash
  django-admin startproject 
@@ -30,7 +56,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-## Terceiro passo
+## Quinto passo
 Crie a aplicação `api` com o comando:
 ```bash
 python manage.py startapp api
@@ -49,11 +75,11 @@ INSTALLED_APPS = [
 ]
 ```
 
-## Quarto passo 
+## Sexto passo 
 Na pasta da sua aplicação `api`, crie um arquivo chamado `urls.py`
 Esse arquivo vai ser destinado à conectar as views nas rotas
 
-## Quinto passo
+## Sétimo passo
 Conectar as urls do projeto às urls da aplicação 
 Para isso, no arquivo `urls.py` do seu PROJETO, importe a seguinte função
 ```python
@@ -95,7 +121,7 @@ python manage.py runserver
 ```
 **Importante** -> Para acessar a sua view, a url deve conter /api no final. 
 
-## Sexto Passo
+## Oitavo Passo
 Criar os models (banco de dados) 
 No arquivo `models.py` na pasta de sua aplicação. Crie a seguinte tabela: 
 ```python
