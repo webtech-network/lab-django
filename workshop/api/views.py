@@ -19,7 +19,7 @@ class TasksView(APIView):
             return Response({"status": "success", "data": {"note": serializer.data}}, status=status.HTTP_201_CREATED)
         else:
             return Response({"status": "fail", "message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-
+    
         
 class SingleTaskView(APIView):
     def get(self, request, id):
@@ -36,6 +36,14 @@ class SingleTaskView(APIView):
             return Response({"status": "success", "data": {"note": serializer.data}}, status=status.HTTP_201_CREATED)
         else:
             return Response({"status": "fail", "message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request, id):
+        task = get_object_or_404(Task, pk=id)
+        serializer = TaskSerializer(task, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id):
         task = get_object_or_404(Task, pk=id)
