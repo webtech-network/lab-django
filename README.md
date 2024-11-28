@@ -171,6 +171,56 @@ python manage.py runserver
 ```
 
 Para acessar a interface ADMIN, use a URL /admin
+## Criando as views
+Agora vamos criar as views para servir os dados do nosso modelo
+## View para servir todas as tarefas de um usuário
+Criamos uma classe e dois métodos, um para o método GET e um POST
+```python
+class TasksView(APIView):
+    def get(self, request):
+        tasks = Task.objects.all()
+        serializer = TaskSerializer(tasks, many=True)
+        return Response(serializer.data)
 
 
+    def post(self, request):
+        serializer = TaskSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": "success", "data": {"note": serializer.data}}, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"status": "fail", "message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
+```
+## View para servir uma tarefa específica
+Vamos adicionar a lógica para trabalhar com uma tarefa baseada em seu id. Nessa classe disponibilizaremos os métodos GET, PUT, PATCH e DELETE
+```python
+class SingleTaskView(APIView):
+    def get(self, request, id):
+        task = get_object_or_404(Task, pk=id)
+        serializer = TaskSerializer(task)
+        return Response(serializer.data)
+
+    
+    def put(self, request, id):
+        task = get_object_or_404(Task, pk=id)
+        serializer = TaskSerializer(task, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": "success", "data": {"note": serializer.data}}, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"status": "fail", "message": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request, id):
+        task = get_object_or_404(Task, pk=id)
+        serializer = TaskSerializer(task, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, id):
+        task = get_object_or_404(Task, pk=id)
+        task.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+```
