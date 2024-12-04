@@ -232,7 +232,7 @@ from .views import BaseView
 
 urlpatterns = [
     path('', TaskView.as_view()), #Para o endpoint http://127.0.0.1:8000/api
-    path(/<id>, SingleTaskView.as_view()) #Para o endpoint http://127.0.0.1:8000/api/<id>
+    path('/<id>', SingleTaskView.as_view()) #Para o endpoint http://127.0.0.1:8000/api/<id>
 ]
 
 ```
