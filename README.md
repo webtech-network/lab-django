@@ -9,7 +9,7 @@ No terminal, teste se o python e o pip estão instalados:
 python --version && pip --version
 ```
 ## Segundo passo
-Vamos navegar até a pasta que criamos com o comando:
+Vamos criar uma pasta clicando com o botão direito na área de trabalho, em seguida vamos navegar até a pasta que criamos com o comando:
 ```bash
  cd Desktop/[nome da pasta que você criou]
 ```
