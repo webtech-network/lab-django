@@ -40,7 +40,7 @@ pip install djangorestframework
 ## Quarto passo
 Criar o projeto django com o comando:
 ```bash
- django-admin startproject 
+ django-admin startproject backend
 ```
 Conecte o rest_framework no arquivo `settings.py`
 
