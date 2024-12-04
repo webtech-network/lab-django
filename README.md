@@ -224,3 +224,15 @@ class SingleTaskView(APIView):
         task.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 ```
+## Criando as rotas
+Agora que temos as views, podemos associá-las a endpoints da seguinte maneira:
+```python
+from django.urls import path
+from .views import BaseView
+
+urlpatterns = [
+    path('', TaskView.as_view()), #Para o endpoint http://127.0.0.1:8000/api
+    path(/<id>, SingleTaskView.as_view()) #Para o endpoint http://127.0.0.1:8000/api/<id>
+]
+
+```
