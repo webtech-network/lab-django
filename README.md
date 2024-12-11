@@ -191,6 +191,12 @@ Agora vamos criar as views para servir os dados do nosso modelo
 ## View para servir todas as tarefas de um usuário
 Criamos uma classe e dois métodos, um para o método GET e um POST
 ```python
+from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import Task
+from .serializers import TaskSerializer
+
 class TasksView(APIView):
     def get(self, request):
         tasks = Task.objects.all()
@@ -243,11 +249,12 @@ class SingleTaskView(APIView):
 Agora que temos as views, podemos associá-las a endpoints da seguinte maneira:
 ```python
 from django.urls import path
-from .views import TaskView,SingleTaskView
+from .views import TasksView,SingleTaskView
 
 urlpatterns = [
-    path('', TaskView.as_view()), #Para o endpoint http://127.0.0.1:8000/api
-    path('/<id>', SingleTaskView.as_view()) #Para o endpoint http://127.0.0.1:8000/api/<id>
+    path('tasks', TasksView.as_view()), #Para o endpoint http://127.0.0.1:8000/api/tasks
+    path('tasks/<id>', SingleTaskView.as_view()) #Para o endpoint http://127.0.0.1:8000/api/<id>
 ]
+
 
 ```
