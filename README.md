@@ -194,6 +194,8 @@ Criamos uma classe e dois métodos, um para o método GET e um POST
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
+from django.shortcuts import get_object_or_404
 from .models import Task
 from .serializers import TaskSerializer
 
@@ -216,6 +218,8 @@ class TasksView(APIView):
 ## View para servir uma tarefa específica
 Vamos adicionar a lógica para trabalhar com uma tarefa baseada em seu id. Nessa classe disponibilizaremos os métodos GET, PUT, PATCH e DELETE
 ```python
+
+
 class SingleTaskView(APIView):
     def get(self, request, id):
         task = get_object_or_404(Task, pk=id)
