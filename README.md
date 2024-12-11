@@ -57,6 +57,10 @@ INSTALLED_APPS = [
 ```
 
 ## Quinto passo
+Navegue até o diretório `backend` com o comando:
+```bash
+cd backend
+```
 Crie a aplicação `api` com o comando:
 ```bash
 python manage.py startapp api
