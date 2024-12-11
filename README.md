@@ -175,6 +175,17 @@ python manage.py runserver
 ```
 
 Para acessar a interface ADMIN, use a URL /admin
+## Criando serializers
+Precisamos criar um serializer para podermos trabalhar com formatos corretos
+```python
+from rest_framework import serializers
+from  .models import Task
+
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields = '__all__'
+```
 ## Criando as views
 Agora vamos criar as views para servir os dados do nosso modelo
 ## View para servir todas as tarefas de um usuário
